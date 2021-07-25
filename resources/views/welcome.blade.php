@@ -16,8 +16,8 @@
 <div class="container">
 
     <div class="jumbotron">
-        <h3>Laravel + AWS Rekognition SDK Integration</h3>
-        <p>This project demonstrates the integration of the AWS Rekognition SDK into a Laravel project.</p>
+        <h3>Image Recognition SDK Integration</h3>
+        <p>This project demonstrates the integration of the Image Recognition and Verification</p>
     </div>
 
     @if(session('success'))
@@ -38,20 +38,24 @@
     @else
         <form action="" method="post" enctype="multipart/form-data">
             @csrf
-            <div class="form-group">
+            <!-- <div class="form-group">
                 <button class="btn btn-sm btn-primary" type="button" onclick="triggerCam()">Use Webcam</button>
                 <button class="btn btn-sm btn-dark" type="button" onclick="flip()">Flip</button>
                 <button class="btn btn-sm btn-success" type="button" onclick="snap()">Snap</button>
                 <button class="btn btn-sm btn-danger" type="button" onclick="stop()">Stop</button>
-            </div>
+            </div> -->
             <div class="form-group">
-                <label for="photo">Upload a Photo 1</label>
+                <label for="photo">Upload a Photo 1 (A very old picture of yours)</label>
                 <input type="file" name="photo1" id="photo1" accept="image/" class="form-control" onchange="previewImg('photo1_preview')">
             </div>
             <div class="form-group">
-                <label for="photo">Upload a Photo 2</label>
+                <label for="photo">Capture photo</label>
                 <!-- <input type="file" name="photo2" id="photo2" accept="image/" class="form-control" onchange="previewImg('photo2_preview')"> -->
-                <input type="text" name="photo2" id="photo2" class="form-control">
+                <input type="hidden" name="photo2" id="photo2" class="form-control">
+                <button class="btn btn-sm btn-primary" type="button" onclick="triggerCam()">Use Webcam</button>
+                <button class="btn btn-sm btn-dark" type="button" onclick="flip()">Flip</button>
+                <button class="btn btn-sm btn-success" type="button" onclick="snap()">Snap</button>
+                <button class="btn btn-sm btn-danger" type="button" onclick="stop()">Stop</button>
             </div>
             <div class="form-group">
                 <input type="submit" value="Submit" class="btn btn-success btn-lg">
