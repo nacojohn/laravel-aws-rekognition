@@ -27,15 +27,8 @@ class PhotosController extends Controller
             // $image2 = fopen($request->file('photo2')->getPathname(), 'r');
             // $bytes2 = fread($image2, $request->file('photo2')->getSize());
 
-            // processing image 2 from webcam
-            if (!file_exists(public_path('webcam/'))) mkdir(public_path('webcam/'), 0775, true);
-            $image_parts = explode(";base64,", $request->photo2);
-            $image_type_aux = explode("image/", $image_parts[0]);
-            $image_type = $image_type_aux[1];
-            $image_base64 = base64_decode($image_parts[1]);
-            $file = public_path('webcam/' . uniqid() . '.' . $image_type);
-            file_put_contents($file, $image_base64);
-
+            
+            $file = $this->uploadFile($request->photo2);
             $image2 = fopen($file, 'r');
             $bytes2 = fread($image2, filesize($file));
 
@@ -103,5 +96,21 @@ class PhotosController extends Controller
         fclose( $ifp ); 
     
         return $output_file; 
+    }
+
+    protected function uploadFile($base64_file)
+    {
+        // create folder if it does not exist
+        if (!file_exists(public_path('webcam/'))) mkdir(public_path('webcam/'), 0775, true);
+        
+        // processing image 2 from webcam
+        $image_parts = explode(";base64,", $base64_file);
+        $image_type_aux = explode("image/", $image_parts[0]);
+        $image_type = $image_type_aux[1];
+        $image_base64 = base64_decode($image_parts[1]);
+        $filePath = public_path('webcam/' . uniqid() . '.' . $image_type);
+        file_put_contents($filePath, $image_base64);
+
+        return $filePath;
     }
 }
