@@ -15,6 +15,11 @@ class PhotosController extends Controller
     
     public function submitForm(Request $request)
     {
+        $validated = $request->validate([
+            'photo1' => 'required|mimes:jpeg,png|max:3000',
+            'photo2' => 'required|string',
+        ]);
+
         try {
             $client = new RekognitionClient([
                 'region'    => config('aws.region'),
