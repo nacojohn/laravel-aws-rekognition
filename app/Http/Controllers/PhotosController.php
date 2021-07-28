@@ -28,9 +28,6 @@ class PhotosController extends Controller
 
             $image1 = fopen($request->file('photo1')->getPathname(), 'r');
             $bytes1 = fread($image1, $request->file('photo1')->getSize());
-            
-            // $image2 = fopen($request->file('photo2')->getPathname(), 'r');
-            // $bytes2 = fread($image2, $request->file('photo2')->getSize());
 
             
             $file = $this->uploadFile($request->photo2);
@@ -83,24 +80,6 @@ class PhotosController extends Controller
             return back()
                 ->with('error','Request failed - ' . $error->getMessage());
         }
-    }
-
-    protected function base64_to_jpeg($base64_string, $output_file) {
-        // open the output file for writing
-        $ifp = fopen( $output_file, 'wb' ); 
-    
-        // split the string on commas
-        // $data[ 0 ] == "data:image/png;base64"
-        // $data[ 1 ] == <actual base64 string>
-        $data = explode( ',', $base64_string );
-    
-        // we could add validation here with ensuring count( $data ) > 1
-        fwrite( $ifp, base64_decode( $data[count($data) > 0 ? 1 : 0] ) );
-    
-        // clean up the file resource
-        fclose( $ifp ); 
-    
-        return $output_file; 
     }
 
     protected function uploadFile($base64_file)

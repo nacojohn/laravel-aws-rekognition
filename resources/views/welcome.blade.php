@@ -6,7 +6,6 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Laravel + AWS Rekognition</title>
-    <!-- <script type="text/javascript" src="https://unpkg.com/webcam-easy/dist/webcam-easy.min.js"></script> -->
     <script type="text/javascript" src="{{ asset('js/webcam-easy.js') }}"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" />
@@ -52,19 +51,12 @@
                 <input type="submit" value="Verify Image" class="btn btn-success btn-lg">
             </div>
 
-            <!-- <div class="form-group">
-                <button class="btn btn-sm btn-primary" type="button" onclick="triggerCam()">Use Webcam</button>
-                <button class="btn btn-sm btn-dark" type="button" onclick="flip()">Flip</button>
-                <button class="btn btn-sm btn-success" type="button" onclick="snap()">Snap</button>
-                <button class="btn btn-sm btn-danger" type="button" onclick="stop()">Stop</button>
-            </div> -->
             <div class="form-group">
                 <label for="photo1">Upload a Photo 1 (A very old picture of yours)</label>
                 <input type="file" name="photo1" id="photo1" accept="image/" class="form-control" onchange="previewImg('photo1_preview')">
             </div>
             <div class="form-group">
-                <label for="photo">Capture photo</label>
-                <!-- <input type="file" name="photo2" id="photo2" accept="image/" class="form-control" onchange="previewImg('photo2_preview')"> -->
+                <label for="photo">Capture photo 2</label>
                 <input type="hidden" name="photo2" id="photo2" class="form-control">
                 <button class="btn btn-sm btn-primary" type="button" onclick="triggerCam()">Use Webcam</button>
                 <button class="btn btn-sm btn-dark" type="button" onclick="flip()">Flip</button>
@@ -81,9 +73,6 @@
                     <canvas id="canvas" class="d-none"></canvas>
                     <!-- <audio id="snapSound" src="audio/snap.wav" preload = "auto"></audio> -->
                 </div>
-                <!-- <div class="col-sm-4">
-                    <img id="photo2_preview"  width="100%" class="img-responsive"/>
-                </div> -->
             </div>
 
         </form>
